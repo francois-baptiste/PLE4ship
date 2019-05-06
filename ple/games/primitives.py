@@ -79,28 +79,6 @@ class Creep(pygame.sprite.Sprite):
         self.rect.center = ((self.pos.x, self.pos.y))
 
 
-class Wall(pygame.sprite.Sprite):
-
-    def __init__(self, pos, w, h):
-        pygame.sprite.Sprite.__init__(self)
-
-        self.pos = vec2d(pos)
-        self.w = w
-        self.h = h
-
-        image = pygame.Surface([w, h])
-        image.fill((10, 10, 10))
-        self.image = image.convert()
-
-        self.rect = self.image.get_rect()
-        self.rect.center = pos
-
-    def draw(self, screen):
-        pygame.draw.rect(
-            screen, (10, 10, 10), [
-                self.pos.x, self.pos.y, self.w, self.h], 0)
-
-
 class Player(pygame.sprite.Sprite):
 
     def __init__(self,

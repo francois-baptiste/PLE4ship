@@ -123,10 +123,7 @@ class PLE(object):
             # to speed resetting and inits up.
             pygame.display.set_mode((1, 1), pygame.NOFRAME)
         else:
-            # in order to use doom, install following https://github.com/openai/doom-py
-            from .games.base.doomwrapper import DoomWrapper
-            if isinstance(self.game, DoomWrapper):
-                self.rng = rng
+            self.rng = None
         
         self.game.setRNG(self.rng)
         self.init()

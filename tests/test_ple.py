@@ -35,56 +35,10 @@ class MyTestCase(unittest.TestCase):
             obs = p.getScreenRGB()
             reward = p.act(agent.pickAction(reward,obs))
 
-    def test_catcher(self):
-        from ple.games.catcher import Catcher
-        game = Catcher()
-        self.run_a_game(game)
-
-    def test_monsterkong(self):
-        from ple.games.monsterkong import MonsterKong
-        game = MonsterKong()
-        self.run_a_game(game)
-
-    def test_flappybird(self):
-        from ple.games.flappybird import FlappyBird
-        game = FlappyBird()
-        self.run_a_game(game)
-
-    def test_pixelcopter(self):
-        from ple.games.pixelcopter import Pixelcopter
-        game = Pixelcopter()
-        self.run_a_game(game)
-
-    def test_puckworld(self):
-        from ple.games.puckworld import PuckWorld
-        game = PuckWorld()
-        self.run_a_game(game)
-
-    def test_raycastmaze(self):
-        from ple.games.raycastmaze import RaycastMaze
-        game = RaycastMaze()
-        self.run_a_game(game)
-
-    def test_snake(self):
-        from ple.games.snake import Snake
-        game = Snake()
-        self.run_a_game(game)
-
     def test_waterworld(self):
         from ple.games.waterworld import WaterWorld
         game = WaterWorld()
         self.run_a_game(game)
-
-    def test_pong(self):
-        from ple.games.pong import Pong
-        game = Pong()
-        self.run_a_game(game)
-
-    def test_doom_not_defined(self):
-        from nose.tools import assert_raises
-        def invoke_doom():
-            DoomWrapper
-        assert_raises(NameError,invoke_doom)
 
 
 if __name__ == "__main__":
