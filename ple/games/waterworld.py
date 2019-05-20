@@ -66,7 +66,7 @@ class WaterWorld(PyGameWrapper):
         self.player = None
         self.creeps = None
 
-    def _handle_player_events(self):
+    def _handle_player_events(self, dt):
         self.dx = 0
         self.dy = 0
         for event in pygame.event.get():
@@ -74,14 +74,16 @@ class WaterWorld(PyGameWrapper):
                 pygame.quit()
                 sys.exit()
 
+
+
             if event.type == pygame.KEYDOWN:
                 key = event.key
 
                 if key == self.actions["left"]:
-                    self.player.steering += .5 * dt
+                    self.player.steering -= .5 * dt * 10000
 
                 elif key == self.actions["right"]:
-                    self.player.steering -= .5 * dt
+                    self.player.steering += .5 * dt * 10000
 
                 else:
                     if dt != 0:
@@ -91,13 +93,13 @@ class WaterWorld(PyGameWrapper):
                     if self.player.velocity.x < 0:
                         self.player.acceleration = self.player.brake_deceleration
                     else:
-                        self.player.acceleration += 1 * dt
+                        self.player.acceleration += 1 * dt * 50000
 
                 if key == self.actions["down"]:
                     if self.player.velocity.x > 0:
                         self.player.acceleration = -self.player.brake_deceleration
                     else:
-                        self.player.acceleration -= 1 * dt
+                        self.player.acceleration -= 1 * dt * 50000
 
 
             else:
@@ -222,7 +224,7 @@ class WaterWorld(PyGameWrapper):
 
         self.score += self.rewards["tick"]
 
-        self._handle_player_events()
+        self._handle_player_events(dt)
         self.player.update(dt)
 
         hits = pygame.sprite.spritecollide(self.player, self.creeps, True)

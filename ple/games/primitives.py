@@ -106,8 +106,8 @@ class Player(pygame.sprite.Sprite):
         self.max_acceleration = max_acceleration
         self.max_steering = max_steering
         self.max_velocity = 40
-        self.brake_deceleration = 10
-        self.free_deceleration = 2
+        self.brake_deceleration = 100
+        self.free_deceleration = 20
 
         self.acceleration = 0.0
         self.steering = 0.0
@@ -141,8 +141,6 @@ class Player(pygame.sprite.Sprite):
         self.angle += degrees(angular_velocity) * dt
 
         self.vel = self.velocity.rotate(-self.angle)
-
-        print(self.angle)
 
         new_x = self.pos.x + self.vel.x * dt
         new_y = self.pos.y + self.vel.y * dt
