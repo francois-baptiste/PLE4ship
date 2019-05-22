@@ -2,7 +2,7 @@
 
 ![Games](ple_games.jpg?raw=True "Games!")
 
-**PLE4ship** is a fork of [**PyGame Learning Environment (PLE)**](https://github.com/ntasfi/PyGame-Learning-Environment) to create a naval environement to an autonomous ship anti collision case.
+**PLE4ship** is a fork of [**PyGame Learning Environment (PLE)**](https://github.com/ntasfi/PyGame-Learning-Environment) to create a naval environement to train and evaluate autonomous agents to avoid collisions.
 
 
 ## Installation
