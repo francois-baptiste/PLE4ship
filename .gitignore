@@ -70,7 +70,7 @@ docs/_build/
 target/
 
 # PyCharm
-.idea/
+.idea/*
 
 # Jupyter Notebook
 .ipynb_checkpoints
