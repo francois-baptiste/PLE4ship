@@ -1,0 +1,4 @@
+keras
+pygame
+scipy
+numpy
