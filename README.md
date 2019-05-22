@@ -1,68 +1,9 @@
-# PyGame-Learning-Environment
+# PLE4ship
 
 ![Games](ple_games.jpg?raw=True "Games!")
 
-**PyGame Learning Environment (PLE)** is a learning environment, mimicking the [Arcade Learning Environment](https://github.com/mgbellemare/Arcade-Learning-Environment) interface, allowing a quick start to Reinforcement Learning in Python. The goal of PLE is allow practitioners to focus design of models and experiments instead of environment design.
+**PLE4ship** is a fork of [**PyGame Learning Environment (PLE)**](https://github.com/ntasfi/PyGame-Learning-Environment) to create a naval environement to an autonomous ship anti collision case.
 
-PLE hopes to eventually build an expansive library of games.
-
-**Accepting PRs for games.**
-
-## Documentation
-
-Docs for the project can be [found here](http://pygame-learning-environment.readthedocs.org/). They are currently WIP.
-
-## Games
-
-Available games can be found in the [docs](http://pygame-learning-environment.readthedocs.org/en/latest/user/games.html).
-
-## Getting started
-
-A `PLE` instance requires a game exposing a set of control methods. To see the required methods look at `ple/games/base.py`. 
-
-Here's an example of importing Pong from the games library within PLE:
-
-```python
-from ple.games.pong import Pong
-
-game = Pong()
-```
-
-Next we configure and initialize PLE:
-
-```python
-from ple import PLE
-
-p = PLE(game, fps=30, display_screen=True, force_fps=False)
-p.init()
-```
-
-The options above instruct PLE to display the game screen, with `display_screen`, while allowing PyGame to select the appropriate delay timing between frames to ensure 30fps with `force_fps`.
-
-You are free to use any agent with the PLE. Below we create a fictional agent and grab the valid actions:
-
-```python
-myAgent = MyAgent(p.getActionSet())
-```
-
-We can now have our agent, with the help of PLE, interact with the game over a certain number of frames:
-
-```python
-
-nb_frames = 1000
-reward = 0.0
-
-for f in range(nb_frames):
-	if p.game_over(): #check if the game is over
-		p.reset_game()
-
-	obs = p.getScreenRGB()
-	action = myAgent.pickAction(reward, obs)
-	reward = p.act(action)
-
-```
-
-Just like that we have our agent interacting with our game environment.
 
 ## Installation
 
@@ -74,10 +15,44 @@ PLE requires the following dependencies:
 Clone the repo and install with pip.
 
 ```bash
-git clone https://github.com/ntasfi/PyGame-Learning-Environment.git
+git clone https://github.com/francois-baptiste/PyGame-Learning-Environment.git
 cd PyGame-Learning-Environment/
 pip install -e .
 ``` 
+
+## Run PyGame-Learning-Environment on Docker
+
+### Setup
+`wget http://raw.githubusercontent.com/francois-baptiste/PyGame-Learning-Environment/master/docker/Dockerfile`
+
+### Build PLE image
+`docker build -t ple4ship .`
+
+##### UBUNTU:  
+`docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -e DISPLAY=unix$DISPLAY ple4ship /bin/bash`
+
+##### MAC:
+in a separate window run:  
+  `brew install socat`  
+  `socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"`
+
+finally, run `ifconfig` and look for the ip of vboxnet0, say `192.168.99.1`  
+
+  `docker run -i -t -e DISPLAY=192.168.99.1:0 ple4ship /bin/bash`
+
+### Usage:
+  `cd ple/games`  
+  `python waterworld.py`
+
+
+## Updating
+
+`cd` into the `PyGame-Learning-Environment` directory and run the following:
+
+```bash
+git pull
+```
 
 ## Headless Usage
 
@@ -89,20 +64,13 @@ os.environ["SDL_VIDEODRIVER"] = "dummy"
 
 Thanks to [@wooridle](https://github.com/ntasfi/PyGame-Learning-Environment/issues/26#issuecomment-289517054).
 
-## Updating
-
-`cd` into the `PyGame-Learning-Environment` directory and run the following:
-
-```bash
-git pull
-```
 
 ## Todos
- * Documentation is currently in progress.
- * Tests
- * Parallel Learning (One agent, many game copies)
- * Add games
- * Generalize the library (eg. add Pyglet support)
+ * Write a specific documentation for the fork.
+ * Use a physical model for the ship (for instance [the one from ShipAI](https://github.com/jmpf2018/ShipAI))
+ * Create a bridge to [OpenCPN](https://opencpn.org/) (AIS UDP stream or fake GPSd)
+ * More tests
+ * And more!
 
 
 ## Citing PLE

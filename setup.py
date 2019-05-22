@@ -21,7 +21,7 @@ setup(
         "Programming Language :: Python :: 2.7",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
-	url='https://github.com/ntasfi/PyGame-Learning-Environment',
+	url='https://github.com/francois-baptiste/PyGame-Learning-Environment',
 	author='Norman Tasfi',
 	author_email='first letter of first name plus last at googles email service.',
 	keywords='',
