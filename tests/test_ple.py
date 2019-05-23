@@ -3,7 +3,7 @@
 
 """
 
-This tests that all the PLE games launch, except for doom; we
+This tests that all the PLE4SHIP games launch, except for doom; we
 explicitly check that it isn't defined.
 
 
@@ -26,8 +26,8 @@ class NaiveAgent():
 class MyTestCase(unittest.TestCase):
 
     def run_a_game(self,game):
-        from ple import PLE
-        p =  PLE(game,display_screen=True)
+        from ple4ship import PLE4SHIP
+        p =  PLE4SHIP(game,display_screen=True)
         agent = NaiveAgent(p.getActionSet())
         p.init()
         reward = p.act(p.NOOP)
@@ -36,7 +36,7 @@ class MyTestCase(unittest.TestCase):
             reward = p.act(agent.pickAction(reward,obs))
 
     def test_waterworld(self):
-        from ple.games.waterworld import WaterWorld
+        from ple4ship.games.waterworld import WaterWorld
         game = WaterWorld()
         self.run_a_game(game)
 

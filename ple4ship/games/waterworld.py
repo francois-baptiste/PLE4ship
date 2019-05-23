@@ -3,10 +3,10 @@ import sys
 
 import pygame
 # import .base
-from ple.games.base import PyGameWrapper
-from ple.games.primitives import Player, Creep
-from ple.games.utils import percent_round_int
-from ple.games.utils.vec2d import vec2d
+from ple4ship.games.base import PyGameWrapper
+from ple4ship.games.primitives import Player, Creep
+from ple4ship.games.utils import percent_round_int
+from ple4ship.games.utils.vec2d import vec2d
 from pygame.constants import K_z, K_q, K_s, K_d
 
 

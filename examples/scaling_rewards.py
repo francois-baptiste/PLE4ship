@@ -1,6 +1,6 @@
 import numpy as np
-from ple import PLE
-from ple.games.waterworld import WaterWorld
+from ple4ship import PLE4SHIP
+from ple4ship.games.waterworld import WaterWorld
 
 
 # lets adjust the rewards our agent recieves
@@ -10,12 +10,12 @@ rewards = {
     "negative": -5.0,  # each time the agent bumps into a red circle
 }
 
-# make a PLE instance.
+# make a PLE4SHIP instance.
 # use lower fps so we can see whats happening a little easier
 game = WaterWorld(width=256, height=256, num_creeps=8)
-p = PLE(game, fps=15, force_fps=False, display_screen=True,
+p = PLE4SHIP(game, fps=15, force_fps=False, display_screen=True,
         reward_values=rewards)
-# we pass in the rewards and PLE will adjust the game for us
+# we pass in the rewards and PLE4SHIP will adjust the game for us
 
 p.init()
 actions = p.getActionSet()
@@ -26,4 +26,4 @@ for i in range(1000):
     action = actions[np.random.randint(0, len(actions))]  # random actions
     reward = p.act(action)
 
-    print "Score: {:0.3f} | Reward: {:0.3f} ".format(p.score(), reward)
+    print("Score: {:0.3f} | Reward: {:0.3f} ".format(p.score(), reward))

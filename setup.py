@@ -11,7 +11,7 @@ install_requires = [
 ]
 
 setup(
-	name='ple',
+	name='ple4ship',
 	version='0.0.1',
 	description='PyGame Learning Environment',
     classifiers=[

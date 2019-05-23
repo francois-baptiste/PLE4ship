@@ -5,9 +5,9 @@ import sys
 import pygame
 from .games.base.pygamewrapper import PyGameWrapper
 
-class PLE(object):
+class PLE4SHIP(object):
     """
-    ple.PLE(
+    ple4ship.PLE4SHIP(
         game, fps=30,
         frame_skip=1, num_steps=1,
         reward_values={}, force_fps=True,
@@ -21,8 +21,8 @@ class PLE(object):
 
     Parameters
     ----------
-    game: Class from ple.games.base
-        The game the PLE environment manipulates and maintains.
+    game: Class from ple4ship.games.base
+        The game the PLE4SHIP environment manipulates and maintains.
 
     fps: int (default: 30)
         The desired frames per second we want to run our game at.
@@ -65,8 +65,8 @@ class PLE(object):
         running at 60fps the agent will get a reward of 60*tick.
 
     force_fps: bool (default: True)
-        If False PLE delays between game.step() calls to ensure the fps is
-        specified. If not PLE passes an elapsed time delta to ensure the
+        If False PLE4SHIP delays between game.step() calls to ensure the fps is
+        specified. If not PLE4SHIP passes an elapsed time delta to ensure the
         game steps by an amount of time consistent with the specified fps.
         This is usally set to True as it allows the game to run as fast as
         possible which speeds up training.
@@ -85,7 +85,7 @@ class PLE(object):
         returns a numpy array.
 
     rng: numpy.random.RandomState, int, array_like or None. (default: 24)
-        Number generator which is used by PLE and the games.
+        Number generator which is used by PLE4SHIP and the games.
 
     """
 
@@ -166,7 +166,7 @@ class PLE(object):
     def getActionSet(self):
         """
         Gets the actions the game supports. Optionally inserts the NOOP
-        action if PLE has add_noop_action set to True.
+        action if PLE4SHIP has add_noop_action set to True.
 
         Returns
         --------
@@ -197,7 +197,7 @@ class PLE(object):
     def getFrameNumber(self):
         """
         Gets the current number of frames the agent has seen
-        since PLE was initialized.
+        since PLE4SHIP was initialized.
 
         Returns
         --------
